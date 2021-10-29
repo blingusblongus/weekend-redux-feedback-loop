@@ -8,6 +8,24 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { logger } from 'redux-logger';
 
+const feedbackReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'ADD_SECTION':
+            return {...state}; 
+        default:
+            return state;
+    }
+}
+
+const storeInstance = createStore(
+    combineReducers(
+        feedbackReducer
+    ),
+    applyMiddleware(
+        logger
+    )
+)
+
 ReactDOM.render(
     <Provider>
         <App />
