@@ -5,6 +5,7 @@ import FormFeeling from '../FormFeeling/FormFeeling';
 import FormUnderstanding from '../FormUnderstanding/FormUnderstanding';
 import FormSupported from '../FormSupported/FormSupported';
 import FormComment from '../FormComment/FormComment';
+import Review from '../Review/Review';
 
 function App() {
 
