@@ -50,6 +50,24 @@ app.post('/', (req, res) => {
         });
 })
 
+app.delete('/admin/:id', (req, res) => {
+    const queryText = `
+        DELETE FROM feedback
+        WHERE id = $1;`;
+
+    const values = [req.params.id];
+
+    pool.query(queryText, values)
+        .then(result => {
+            console.log('DELETE @', req.params.id);
+            res.sendStatus(204);
+        }).catch(err => {
+            console.log('DELETE ERR');
+            console.log('err', err);
+            res.sendStatus(500);
+        })
+})
+
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {
     console.log('Listening on port: ', PORT);

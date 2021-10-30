@@ -7,6 +7,7 @@ function Admin(props) {
 
     useEffect(() => {
         getFeedback();
+        console.log('I fire once');
     }, []);
 
     const getFeedback = () => {
@@ -34,7 +35,8 @@ function Admin(props) {
             </thead>
             <tbody>
                 {feedback.map(row => {
-                    return <AdminItem row={row}/>
+                    return <AdminItem key={row.id} row={row} 
+                    getFeedback={getFeedback}/>
                 })}
             </tbody>
         </table>
