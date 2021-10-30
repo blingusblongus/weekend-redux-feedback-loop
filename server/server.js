@@ -17,8 +17,7 @@ app.get('/admin', (req, res) => {
 
     pool.query(queryText)
         .then(result => {
-            console.log('GET')
-            console.log(result.rows);
+            console.log('GET');
             res.send(result.rows);
         }).catch(err => {
             console.log('GET ERR', err);

@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import AdminItem from "../AdminItem/AdminItem";
 
 function Admin(props) {
-    const [feedback, setFeedback] = useState('');
+    const [feedback, setFeedback] = useState([]);
 
     useEffect(() => {
         getFeedback();
@@ -33,15 +34,7 @@ function Admin(props) {
             </thead>
             <tbody>
                 {feedback.map(row => {
-                    return (
-                        <tr key={row.id}>
-                            <td>{row.feeling}</td>
-                            <td>{row.understanding}</td>
-                            <td>{row.support}</td>
-                            <td>{row.comments}</td>
-                            <td><button>Delete</button></td>
-                        </tr>
-                    )
+                    return <AdminItem row={row}/>
                 })}
             </tbody>
         </table>
