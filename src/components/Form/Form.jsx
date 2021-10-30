@@ -8,29 +8,30 @@ function FormFeeling({formSection}) {
     const [input, setInput] = useState(formData[formSection] || '');
     const dispatch = useDispatch();
     const history = useHistory();
-    let prompt, inputType, back, next;
+    let prompt, inputType, pgIndex;
+    const navList = ['/', '/understanding', '/support', '/comments', '/review']
 
     // Select form content
     switch (formSection) {
         case 'feeling':
             prompt = "How are you feeling today?";
             inputType = 'number';
-            next = '/understanding';
+            pgIndex = 0;
             break;
         case 'understanding':
             prompt = "How well are you understanding the content?";
             inputType = 'number';
-            next = '/support';
+            pgIndex = 1;
             break;
         case 'support':
             prompt = "How well are you being supported?";
             inputType = 'number';
-            next = '/comments';
+            pgIndex = 2;
             break;
         case 'comments':
             prompt = "Any comments you want to leave?";
             inputType = 'text';
-            next = '/review';
+            pgIndex = 3;
             break;
         default:
             break;
@@ -49,7 +50,8 @@ function FormFeeling({formSection}) {
             }
         });
 
-        history.push(next)
+        //Navigate to the next page in the navList
+        history.push(navList[pgIndex + 1]);
     }
 
     return (
