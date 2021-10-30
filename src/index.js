@@ -18,16 +18,16 @@ const feedbackReducer = (state = {}, action) => {
 }
 
 const storeInstance = createStore(
-    combineReducers(
+    combineReducers({
         feedbackReducer
-    ),
+    }),
     applyMiddleware(
         logger
     )
 )
 
 ReactDOM.render(
-    <Provider>
+    <Provider store={storeInstance}>
         <App />
     </Provider>
     , document.getElementById('root'));
