@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 import Review from '../Review/Review';
 import Form from '../Form/Form.jsx';
+import Admin from '../Admin/Admin';
 function App() {
 
   return (
@@ -17,6 +18,7 @@ function App() {
         <Form formSection="support" />
         <Form formSection="comments" />
         <Review />
+        <Admin />
       </main>
     </div>
   );
