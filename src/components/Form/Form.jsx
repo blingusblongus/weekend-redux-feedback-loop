@@ -54,9 +54,14 @@ function FormFeeling({formSection}) {
         history.push(navList[pgIndex + 1]);
     }
 
+    const handleBack = () => {
+        history.push(navList[pgIndex - 1]);
+    }
+
     return (
         <div>
             <h2>{prompt}</h2>
+            {pgIndex ? <button onClick={handleBack}>Back</button> : ''}
             <form onSubmit={handleSubmit}>
                 <input type={inputType}
                 onChange={(e) => setInput(e.target.value)}
