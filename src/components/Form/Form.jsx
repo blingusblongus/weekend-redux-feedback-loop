@@ -3,9 +3,15 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-function FormFeeling({formSection}) {
+import { Button, TextField, Rating } from "@mui/material";
+
+function Form({ formSection }) {
+    // Grab existing data from reducer
     const formData = useSelector(store => store.feedbackReducer);
+
+    // If the relevant data is in the store, set the input to that value
     const [input, setInput] = useState(formData[formSection] || '');
+
     const dispatch = useDispatch();
     const history = useHistory();
     let prompt, inputType, pgIndex;
@@ -58,18 +64,31 @@ function FormFeeling({formSection}) {
         history.push(navList[pgIndex - 1]);
     }
 
+    const slider = (
+        <Rating type={inputType}
+            onChange={(e) => setInput(e.target.value)}
+            value={inputType === "number" ? Number(input) : input}
+            min={1}
+            max={5}
+            ></Rating>
+    )
+
+    const textField = (
+        <TextField></TextField>
+    )
+
     return (
         <div>
             <h2>{prompt}</h2>
-            {pgIndex ? <button onClick={handleBack}>Back</button> : ''}
             <form onSubmit={handleSubmit}>
-                <input type={inputType}
-                onChange={(e) => setInput(e.target.value)}
-                value={input}></input>
-                <button>NEXT</button>
+                {inputType === "number" ? slider : ''}
+                <Button variant="contained" type="submit">NEXT</Button>
             </form>
+            <div id="back-btn-container">
+                {pgIndex > 0 && <Button variant="contained" onClick={handleBack}>Back</Button>}
+            </div>
         </div>
     );
 }
 
-export default FormFeeling;
+export default Form;
