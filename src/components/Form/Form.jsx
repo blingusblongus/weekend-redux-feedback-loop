@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 function FormFeeling({formSection}) {
-    const [input, setInput] = useState('');
+    const formData = useSelector(store => store.feedbackReducer);
+    const [input, setInput] = useState(formData[formSection] || '');
     const dispatch = useDispatch();
     let prompt, inputType;
 
