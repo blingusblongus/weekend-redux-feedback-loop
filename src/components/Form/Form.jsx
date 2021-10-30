@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
 import { Button, TextField, Rating } from "@mui/material";
+import './Form.css';
 
 function Form({ formSection }) {
     // Grab existing data from reducer
@@ -14,7 +15,7 @@ function Form({ formSection }) {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    let prompt, inputType, pgIndex;
+    let prompt, inputType, pgIndex, inputField;
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
 
     // Select form content
@@ -64,26 +65,40 @@ function Form({ formSection }) {
         history.push(navList[pgIndex - 1]);
     }
 
-    const slider = (
-        <Rating type={inputType}
-            onChange={(e) => setInput(e.target.value)}
-            value={inputType === "number" ? Number(input) : input}
-            min={1}
-            max={5}
+    // assign inputField to appropriate component
+    if (inputType === "number") {
+        inputField = (
+            <Rating type={inputType}
+                onChange={(e) => setInput(e.target.value)}
+                value={parseInt(input)}
+                min={1}
+                max={5}
             ></Rating>
-    )
-
-    const textField = (
-        <TextField></TextField>
-    )
+        )
+    } else {
+        inputField = (
+            <div className="comment-container">
+            <TextField
+                multiline
+                rows={4}
+                size="small"
+                margin="dense"
+                fullWidth
+            ></TextField>
+            </div>
+        )
+    }
 
     return (
         <div>
             <h2>{prompt}</h2>
             <form onSubmit={handleSubmit}>
-                {inputType === "number" ? slider : ''}
-                <Button variant="contained" type="submit">NEXT</Button>
+                {inputField}
+                <div id="next-container">
+                    <Button variant="contained" type="submit">NEXT</Button>
+                </div>
             </form>
+            <hr />
             <div id="back-btn-container">
                 {pgIndex > 0 && <Button variant="contained" onClick={handleBack}>Back</Button>}
             </div>
