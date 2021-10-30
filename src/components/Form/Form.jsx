@@ -74,21 +74,23 @@ function Form({ formSection }) {
     // assign inputField to appropriate component
     if (inputType === "number") {
         inputField = (
-            <div>
+            <div className="input-container">
                 <div id="reaction-container">
                     {reactions[input - 1]}
                 </div>
-                <Rating type={inputType}
-                    onChange={(e) => setInput(e.target.value)}
-                    value={parseInt(input)}
-                    min={1}
-                    max={5}
-                ></Rating>
+                <div>
+                    <Rating type={inputType}
+                        onChange={(e) => setInput(e.target.value)}
+                        value={parseInt(input)}
+                        min={1}
+                        max={5}
+                    ></Rating>
+                </div>
             </div>
         )
     } else {
         inputField = (
-            <div id="comment-container">
+            <div id="comment-container input-container">
                 <TextField
                     multiline
                     rows={4}
@@ -101,16 +103,16 @@ function Form({ formSection }) {
     }
 
     return (
-        <div>
+        <div id="form-container">
             <h2>{prompt}</h2>
             <form onSubmit={handleSubmit}>
                 {inputField}
-                <div id="next-container">
+                <div id="next-wrapper">
                     <Button variant="contained" type="submit">NEXT</Button>
                 </div>
             </form>
             <hr />
-            <div id="back-btn-container">
+            <div id="back-btn-wrapper">
                 {pgIndex > 0 && <Button variant="contained" onClick={handleBack}>Back</Button>}
             </div>
         </div>
