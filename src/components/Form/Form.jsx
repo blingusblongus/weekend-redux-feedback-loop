@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function FormFeeling({formSection}) {
     const [input, setInput] = useState('');
+    const dispatch = useDispatch();
     let prompt, inputType;
 
+    // Select form content
     switch (formSection) {
         case 'feeling':
             prompt = "How are you feeling today?";
@@ -25,12 +28,20 @@ function FormFeeling({formSection}) {
             break;
     }
 
+    // on Submit, send data to redux
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        dispatch({
+            type: 'SUBMIT_SECTION',
+            payload: {
+                // reducer adds {[formSection]: value}
+                formSection: formSection,
+                value: input
+            }
+        })
     }
 
-
-    
     return (
         <div>
             <h2>{prompt}</h2>

@@ -10,8 +10,12 @@ import { logger } from 'redux-logger';
 
 const feedbackReducer = (state = {}, action) => {
     switch (action.type) {
-        case 'ADD_SECTION':
-            return {...state}; 
+        case 'SUBMIT_SECTION':
+            // Add or update the formSection value
+            return {
+                ...state, 
+                [action.payload.formSection]: action.payload.value
+            }; 
         default:
             return state;
     }
