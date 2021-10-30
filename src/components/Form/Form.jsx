@@ -9,7 +9,7 @@ function FormFeeling({formSection}) {
     const dispatch = useDispatch();
     const history = useHistory();
     let prompt, inputType, pgIndex;
-    const navList = ['/', '/understanding', '/support', '/comments', '/review']
+    const navList = ['/', '/understanding', '/support', '/comments', '/review'];
 
     // Select form content
     switch (formSection) {

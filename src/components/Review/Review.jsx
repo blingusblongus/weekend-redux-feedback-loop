@@ -1,14 +1,17 @@
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 function Review(props) {
     const feedback = useSelector(store => store.feedbackReducer);
+    const history = useHistory();
     
     const handleClick = () => {
         console.log('clicked');
         axios.post('/', feedback)
             .then(response => {
                 console.log('POST SUCCESS');
+                history.push('/success');
             }).catch(err => {
                 console.log(err);
             })
