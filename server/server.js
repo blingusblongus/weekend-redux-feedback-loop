@@ -26,6 +26,8 @@ app.get('/admin', (req, res) => {
 });
 
 app.post('/', (req, res) => {
+    console.log('req', req.body);
+    console.log('POST');
     const queryText = `
         INSERT INTO feedback 
         ("feeling", "understanding", "support", "comments")

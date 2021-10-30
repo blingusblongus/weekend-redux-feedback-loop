@@ -14,7 +14,7 @@ function App() {
       <main>
         <Form formSection="feeling" />
         <Form formSection="understanding" />
-        <Form formSection="supported" />
+        <Form formSection="support" />
         <Form formSection="comments" />
         <Review />
       </main>
