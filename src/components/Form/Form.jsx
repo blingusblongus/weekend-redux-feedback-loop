@@ -16,7 +16,7 @@ function FormFeeling({formSection}) {
             prompt = "How well are you understanding the content?";
             inputType = 'number';
             break;
-        case 'supported':
+        case 'support':
             prompt = "How well are you being supported?";
             inputType = 'number';
             break;

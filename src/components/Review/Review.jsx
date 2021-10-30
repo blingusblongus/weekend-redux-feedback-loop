@@ -12,7 +12,7 @@ function Review(props) {
             <h2>Review Your Feedback</h2>
             <div>Feeling: {feedback.feeling}</div>
             <div>Understanding: {feedback.understanding}</div>
-            <div>Support: {feedback.supported}</div>
+            <div>Support: {feedback.support}</div>
             <div>Comments: {feedback.comments}</div>
             <button onClick={handleClick}>SUBMIT</button>
 
