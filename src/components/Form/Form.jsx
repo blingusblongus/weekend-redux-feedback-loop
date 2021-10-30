@@ -17,7 +17,13 @@ function Form({ formSection }) {
     const history = useHistory();
     let prompt, inputType, pgIndex, inputField;
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
-
+    const reactions = [
+        '¯\\_(ತ_ʖತ)_/¯',
+        '(o_O) ?',
+        '(´･_･`)',
+        '(*^‿^*)',
+        '°˖✧◝(⁰▿⁰)◜✧˖°'
+    ]
     // Select form content
     switch (formSection) {
         case 'feeling':
@@ -68,23 +74,28 @@ function Form({ formSection }) {
     // assign inputField to appropriate component
     if (inputType === "number") {
         inputField = (
-            <Rating type={inputType}
-                onChange={(e) => setInput(e.target.value)}
-                value={parseInt(input)}
-                min={1}
-                max={5}
-            ></Rating>
+            <div>
+                <div id="reaction-container">
+                    {reactions[input - 1]}
+                </div>
+                <Rating type={inputType}
+                    onChange={(e) => setInput(e.target.value)}
+                    value={parseInt(input)}
+                    min={1}
+                    max={5}
+                ></Rating>
+            </div>
         )
     } else {
         inputField = (
-            <div className="comment-container">
-            <TextField
-                multiline
-                rows={4}
-                size="small"
-                margin="dense"
-                fullWidth
-            ></TextField>
+            <div id="comment-container">
+                <TextField
+                    multiline
+                    rows={4}
+                    size="small"
+                    margin="dense"
+                    fullWidth
+                ></TextField>
             </div>
         )
     }
