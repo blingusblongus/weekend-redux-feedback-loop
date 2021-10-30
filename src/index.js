@@ -21,6 +21,7 @@ const feedbackReducer = (state = {}, action) => {
     }
 }
 
+
 const storeInstance = createStore(
     combineReducers({
         feedbackReducer
