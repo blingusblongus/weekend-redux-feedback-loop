@@ -1,6 +1,5 @@
 [ ] To-do
     [ ] Add SPA routing
-    [ ] Add reducer to keep data
 
 [ ] Bonus
     [ ] Add back buttons

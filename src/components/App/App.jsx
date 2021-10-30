@@ -3,24 +3,49 @@ import axios from 'axios';
 import './App.css';
 import Review from '../Review/Review';
 import Form from '../Form/Form.jsx';
+import Success from '../Success/Success';
 import Admin from '../Admin/Admin';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 function App() {
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <h1 className='App-title'>Feedback!</h1>
-        <h4>Don't forget it!</h4>
-      </header>
-      <main>
-        <Form formSection="feeling" />
-        <Form formSection="understanding" />
-        <Form formSection="support" />
-        <Form formSection="comments" />
-        <Review />
-        <Admin />
-      </main>
-    </div>
+    <Router>
+      <div className='App'>
+        <header className='App-header'>
+          <h1 className='App-title'>Feedback!</h1>
+          <h4>Don't forget it!</h4>
+        </header>
+        <main>
+          <Route path="/" exact>
+            <Form formSection="feeling" />
+          </Route>
+
+          <Route path="/understanding">
+            <Form formSection="understanding" />
+          </Route>
+
+          <Route path="/support">
+            <Form formSection="support" />
+          </Route>
+
+          <Route path="/comments">
+            <Form formSection="comments" />
+          </Route>
+
+          <Route path="/review">
+            <Review />
+          </Route>
+
+          <Route path="/success">
+            <Success />
+          </Route>
+
+          <Route path="/admin">
+            <Admin />
+          </Route>
+        </main>
+      </div>
+    </Router>
   );
 }
 

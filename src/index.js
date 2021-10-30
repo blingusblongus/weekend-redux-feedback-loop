@@ -15,7 +15,9 @@ const feedbackReducer = (state = {}, action) => {
             return {
                 ...state, 
                 [action.payload.formSection]: action.payload.value
-            }; 
+            };
+        case 'CLEAR_FEEDBACK':
+            return {};
         default:
             return state;
     }
