@@ -7,17 +7,21 @@ import { Button, TextField, Rating } from "@mui/material";
 import './Form.css';
 
 function Form({ formSection }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    let prompt, inputType, pgIndex, inputField;
+
     // Grab existing data from reducer
     const formData = useSelector(store => store.feedbackReducer);
 
     // If the relevant data is in the store, set the input to that value
     const [input, setInput] = useState(formData[formSection] || '');
+    const [displayErr, setDisplayErr] = useState(false);
 
-    const dispatch = useDispatch();
-    const history = useHistory();
-    let prompt, inputType, pgIndex, inputField, emptyErr;
-
+    // Default flow to help with history hook
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
+    
+    // Reactions for Rating components
     const reactions = [
         '¯\\_(ತ_ʖತ)_/¯',
         '(o_O) ?',
@@ -25,6 +29,7 @@ function Form({ formSection }) {
         '(*^‿^*)',
         '°˖✧◝(⁰▿⁰)◜✧˖°'
     ]
+
     // Select form content
     switch (formSection) {
         case 'feeling':
@@ -55,7 +60,10 @@ function Form({ formSection }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(input)
+        if(!input && formSection !== 'comments'){
+            setDisplayErr(true);
+            return;
+        }
 
         dispatch({
             type: 'SUBMIT_SECTION',
@@ -74,33 +82,40 @@ function Form({ formSection }) {
         history.push(navList[pgIndex - 1]);
     }
 
+    const selectRating = (e) => {
+        setInput(e.target.value);
+        setDisplayErr(false);
+    }
+
     // assign inputField to appropriate component
     if (inputType === "number") {
         inputField = (
-            <div className="input-container">
-                <div id="reaction-container">
+            <div id="input-container">
+                <div id="reaction-wrapper">
                     {reactions[input - 1]}
                 </div>
-                <div>
+                <div className="relative" id="rating-wrapper">
                     <Rating type={inputType}
-                        onChange={(e) => setInput(e.target.value)}
+                        onChange={selectRating}
                         value={parseInt(input)}
                         min={1}
                         max={5}
+                        size="large"
                     ></Rating>
+                    {displayErr && <div className="absolute" id="error-msg">Select 1 to 5 stars</div>}
                 </div>
             </div>
         )
     } else {
         inputField = (
-            <div id="comment-container input-container">
+            <div id="input-container">
                 <TextField
+                    onChange={(e)=>setInput(e.target.value)}
                     multiline
                     rows={4}
                     size="small"
                     margin="dense"
                     fullWidth
-                    required
                 ></TextField>
             </div>
         )
