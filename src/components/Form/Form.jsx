@@ -6,6 +6,9 @@ import { useHistory } from "react-router";
 import { Button, TextField, Rating } from "@mui/material";
 import './Form.css';
 
+// Reactions for Rating components
+import reactions from "../../modules/reactions";
+
 function Form({ formSection }) {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -21,14 +24,7 @@ function Form({ formSection }) {
     // Default flow to help with history hook
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
     
-    // Reactions for Rating components
-    const reactions = [
-        '¯\\_(ತ_ʖತ)_/¯',
-        '(o_O) ?',
-        '(´･_･`)',
-        '(*^‿^*)',
-        '°˖✧◝(⁰▿⁰)◜✧˖°'
-    ]
+    
 
     // Select form content
     switch (formSection) {

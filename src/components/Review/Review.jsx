@@ -3,11 +3,24 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
 
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Button } from "@mui/material";
+import { Paper } from "@mui/material";
+import './Review.css';
+
+// emoji reactions
+import reactions from "../../modules/reactions";
+
 function Review(props) {
     const feedback = useSelector(store => store.feedbackReducer);
     const history = useHistory();
     const dispatch = useDispatch();
-    
+
     const handleClick = () => {
         console.log('clicked');
         axios.post('/', feedback)
@@ -29,13 +42,40 @@ function Review(props) {
     return (
         <div>
             <h2>Review Your Feedback</h2>
-            <button onClick={()=> history.push('/comments')}>Back</button>
-            <div>Feeling: {feedback.feeling}</div>
-            <div>Understanding: {feedback.understanding}</div>
-            <div>Support: {feedback.support}</div>
-            <div>Comments: {feedback.comments}</div>
-            <button onClick={handleClick}>SUBMIT</button>
+            <div id="table-container">
+                <Paper>
+                    <Table>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell sx={{ width: "33.3%" }}>Feeling:</TableCell>
+                                <TableCell sx={{ width: "33.3%" }} align="center">{feedback.feeling}</TableCell>
+                                <TableCell align='center'>{reactions[feedback.feeling]}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Understanding:</TableCell>
+                                <TableCell align="center">{feedback.understanding}</TableCell>
+                                <TableCell align='center'>{reactions[feedback.understanding]}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Support:</TableCell>
+                                <TableCell align="center">{feedback.support}</TableCell>
+                                <TableCell align='center'>{reactions[feedback.support]}</TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>Comments:</TableCell>
+                                <TableCell colSpan={2}>{feedback.comments}</TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </Paper>
+                <div id="bottom-buttons">
+                    <Button variant="contained" onClick={() => history.push('/comments')}>Back</Button>
+                    <Button variant="contained" onClick={handleClick}>SUBMIT</Button>
+                </div>
+            </div>
+
         </div>
+
     );
 }
 
