@@ -5,12 +5,21 @@ form {
     margin: auto;
 }
 
-#reaction-container {
-    height: 20px;
+#rating-wrapper {
+    margin-bottom: 30px;
 }
 
-#next-wrapper {
-    margin: 10px;
+#reaction-wrapper {
+    height: 20px;
+    font-size: 150%;
+    margin-bottom: 10px;
+}
+
+#error-msg {
+    color: red;
+    left: 50%;
+    transform: translateX(-50%);
+    font-style: italic;
 }
 
 @media screen and (max-width: 500px) {
