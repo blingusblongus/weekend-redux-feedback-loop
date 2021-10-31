@@ -24,8 +24,6 @@ function Form({ formSection }) {
     // Default flow to help with history hook
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
 
-
-
     // Select form content
     switch (formSection) {
         case 'feeling':
@@ -52,7 +50,7 @@ function Form({ formSection }) {
             break;
     }
 
-    // on Submit, send data to redux
+    // on call, send current input data to redux
     const updateStore = () => {
 
         dispatch({

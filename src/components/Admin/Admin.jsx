@@ -2,6 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AdminItem from "../AdminItem/AdminItem";
 
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import { Button, Container } from "@mui/material";
+import { Paper } from "@mui/material";
+
 function Admin(props) {
     const [feedback, setFeedback] = useState([]);
 
@@ -23,23 +32,27 @@ function Admin(props) {
     console.log('feedback', feedback);
 
     return (
-        <table>
-            <thead>
-                <tr>
-                    <th>Feeling</th>
-                    <th>Understanding</th>
-                    <th>Support</th>
-                    <th>Comments</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {feedback.map(row => {
-                    return <AdminItem key={row.id} row={row} 
-                    getFeedback={getFeedback}/>
-                })}
-            </tbody>
-        </table>
+        <Container>
+        <Paper>
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell align="center" sx={{width: '15%'}}>Feeling</TableCell>
+                        <TableCell align="center" sx={{width: '15%'}}>Understanding</TableCell>
+                        <TableCell align="center" sx={{width: '15%'}}>Support</TableCell>
+                        <TableCell>Comments</TableCell>
+                        <TableCell sx={{width: '10%'}}>Delete</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {feedback.map(row => {
+                        return <AdminItem key={row.id} row={row}
+                            getFeedback={getFeedback} />
+                    })}
+                </TableBody>
+            </Table>
+            </Paper>
+            </Container>
     )
 }
 
