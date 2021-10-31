@@ -1,5 +1,6 @@
 [x] To-do
     [x] Add SPA routing
+    [ ] Change Page Title
 
 [ ] Bonus
     [x] Add back buttons
