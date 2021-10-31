@@ -1,12 +1,12 @@
-# Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+### Full-stack Feedback SPA
 
 ## Description
 
 *Duration: 3 Day Task*
 
 A full-stack full-crud single page app for collecting, submitting, and viewing feedback responses.
+
+As many of the pages share similar structure, I challenged myself to use a single dynamic Form component for each of the views that collect user input. This required some additional logic and conditional formatting, but ended up saving me a lot of time when it came to editing, standardizing, and introducing Material UI components in each view.
 
 ## Screenshot
 
@@ -45,7 +45,6 @@ A full-stack full-crud single page app for collecting, submitting, and viewing f
 ## Acknowledgements
 
 Thanks to my instructors and peers at [Prime Digital Academy,](primeacademy.io) who taught me the skills to make this project a reality!
-
 
 ## Support
 

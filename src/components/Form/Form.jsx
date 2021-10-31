@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-import { Button, TextField, Rating, Paper } from "@mui/material";
+import { Button, TextField, Rating } from "@mui/material";
 import './Form.css';
 
 // Reactions for Rating components
