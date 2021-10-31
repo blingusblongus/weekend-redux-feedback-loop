@@ -51,21 +51,21 @@ function Review(props) {
                                 <TableCell sx={{ width: "33.3%" }} align="center">
                                     {feedback.feeling}</TableCell>
                                 <TableCell align='center'>
-                                    {reactions[feedback.feeling]}</TableCell>
+                                    {reactions[feedback.feeling - 1]}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Understanding:</TableCell>
                                 <TableCell align="center">
                                     {feedback.understanding}</TableCell>
                                 <TableCell align='center'>
-                                    {reactions[feedback.understanding]}</TableCell>
+                                    {reactions[feedback.understanding - 1]}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Support:</TableCell>
                                 <TableCell align="center">
                                     {feedback.support}</TableCell>
                                 <TableCell align='center'>
-                                    {reactions[feedback.support]}</TableCell>
+                                    {reactions[feedback.support - 1]}</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell>Comments:</TableCell>
