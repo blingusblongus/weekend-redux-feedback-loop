@@ -129,6 +129,8 @@ function Form({ formSection }) {
         )
     }
 
+    console.log(confirm('Do you want to delete?'))
+
     return (
         
         <div id="form-container">

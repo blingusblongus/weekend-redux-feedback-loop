@@ -19,6 +19,7 @@ function Admin(props) {
     }, []);
 
     const getFeedback = () => {
+        if(!confirm('Are you sure you want to delete?')) r
         axios.get('/admin')
             .then(response => {
                 console.log('GET SUCCESS');

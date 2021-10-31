@@ -10,6 +10,9 @@ As many of the pages share similar structure, I challenged myself to use a singl
 
 ## Screenshot
 
+![An example of the review submission page](images/screen1.png)
+![An example of the admin page](images/screen2.png)
+
 ## Prerequisites
 
 - Node.js
