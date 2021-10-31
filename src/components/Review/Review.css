@@ -1,0 +1,16 @@
+.table-num {
+    width: 50%;
+    margin: auto;
+}
+
+#table-container {
+    width: 50%;
+    margin: 30px auto;
+}
+
+#bottom-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    width: 100%;
+}
