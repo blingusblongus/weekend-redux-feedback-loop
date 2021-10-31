@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TableRow, TableCell, Button } from "@mui/material";
+import { bgcolor } from "@mui/system";
 
 function AdminItem({ row, getFeedback }) {
     const handleDelete = () => {
@@ -23,7 +24,7 @@ function AdminItem({ row, getFeedback }) {
     }
 
     return (
-        <TableRow>
+        <TableRow sx={row.flagged && {bgcolor: 'red'}}>
             <TableCell align="center">{row.feeling}</TableCell>
             <TableCell align="center">{row.understanding}</TableCell>
             <TableCell align="center">{row.support}</TableCell>
