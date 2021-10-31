@@ -53,13 +53,7 @@ function Form({ formSection }) {
     }
 
     // on Submit, send data to redux
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (!input && formSection !== 'comments') {
-            setDisplayErr(true);
-            return;
-        }
+    const updateStore = () => {
 
         dispatch({
             type: 'SUBMIT_SECTION',
@@ -74,7 +68,24 @@ function Form({ formSection }) {
         history.push(navList[pgIndex + 1]);
     }
 
+    const handleNext = () => {
+        // validate
+        if (!input && formSection !== 'comments') {
+            setDisplayErr(true);
+            return;
+        }
+        // store entered data in redux
+        updateStore();
+
+        //Navigate to the next page in the navList
+        history.push(navList[pgIndex + 1]);
+    }
+
     const handleBack = () => {
+        // store entered data in redux
+        updateStore();
+
+        // Navigate back
         history.push(navList[pgIndex - 1]);
     }
 
@@ -111,6 +122,7 @@ function Form({ formSection }) {
                     rows={4}
                     size="small"
                     margin="dense"
+                    value={input}
                     fullWidth
                 ></TextField>
             </div>
@@ -120,7 +132,7 @@ function Form({ formSection }) {
     return (
         <div id="form-container">
             <h2>{prompt}</h2>
-            <form onSubmit={handleSubmit} className="relative">
+            <form className="relative">
 
                 {/* Render Rating or TextField as appropriate */}
                 {inputField}
@@ -134,7 +146,7 @@ function Form({ formSection }) {
                     )}
 
                     <div className={pgIndex == 0 && "flex-center"} id="next-wrapper">
-                        <Button variant="contained" type="submit">NEXT</Button>
+                        <Button variant="contained" onClick={handleNext}>NEXT</Button>
                     </div>
                 </div>
             </form>
