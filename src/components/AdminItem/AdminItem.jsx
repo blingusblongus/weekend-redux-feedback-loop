@@ -19,13 +19,13 @@ function AdminItem({ row, getFeedback }) {
             <TableCell align="center">{row.support}</TableCell>
             <TableCell>{row.comments}</TableCell>
             <TableCell>
-                <Button 
-                onClick={handleClick}
-                variant="outlined"
-                color="error">
+                <Button
+                    onClick={handleClick}
+                    variant="outlined"
+                    color="error">
                     Delete
                 </Button>
-                </TableCell>
+            </TableCell>
         </TableRow>
     )
 }

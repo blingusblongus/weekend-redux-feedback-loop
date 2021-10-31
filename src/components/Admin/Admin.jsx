@@ -33,26 +33,26 @@ function Admin(props) {
 
     return (
         <Container>
-        <Paper>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell align="center" sx={{width: '15%'}}>Feeling</TableCell>
-                        <TableCell align="center" sx={{width: '15%'}}>Understanding</TableCell>
-                        <TableCell align="center" sx={{width: '15%'}}>Support</TableCell>
-                        <TableCell>Comments</TableCell>
-                        <TableCell sx={{width: '10%'}}>Delete</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {feedback.map(row => {
-                        return <AdminItem key={row.id} row={row}
-                            getFeedback={getFeedback} />
-                    })}
-                </TableBody>
-            </Table>
+            <Paper>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center" sx={{ width: '15%' }}>Feeling</TableCell>
+                            <TableCell align="center" sx={{ width: '15%' }}>Understanding</TableCell>
+                            <TableCell align="center" sx={{ width: '15%' }}>Support</TableCell>
+                            <TableCell>Comments</TableCell>
+                            <TableCell sx={{ width: '10%' }}>Delete</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {feedback.map(row => {
+                            return <AdminItem key={row.id} row={row}
+                                getFeedback={getFeedback} />
+                        })}
+                    </TableBody>
+                </Table>
             </Paper>
-            </Container>
+        </Container>
     )
 }
 
