@@ -11,33 +11,10 @@ app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
 const adminRouter = require('./routes/admin.router.js');
+const userRouter = require('./routes/user.router.js');
 
 app.use('/admin', adminRouter);
-
-app.post('/', (req, res) => {
-    console.log('req', req.body);
-    console.log('POST');
-    const queryText = `
-        INSERT INTO feedback 
-        ("feeling", "understanding", "support", "comments")
-        VALUES ($1, $2, $3, $4);`;
-
-    const values = [
-        req.body.feeling,
-        req.body.understanding,
-        req.body.support,
-        req.body.comments
-    ];
-
-    pool.query(queryText, values)
-        .then(result => {
-            console.log('POST SUCCESS');
-            res.sendStatus(201);
-        }).catch(err => {
-            console.log('POST ERR', err);
-            res.sendStatus(400);
-        });
-})
+app.use('/user', userRouter);
 
 /** ---------- START SERVER ---------- **/
 app.listen(PORT, () => {

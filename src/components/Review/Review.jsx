@@ -23,7 +23,7 @@ function Review(props) {
 
     const handleClick = () => {
         console.log('clicked');
-        axios.post('/', feedback)
+        axios.post('/user', feedback)
             .then(response => {
                 console.log('POST SUCCESS');
 
