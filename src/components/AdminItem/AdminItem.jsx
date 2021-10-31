@@ -1,8 +1,10 @@
 import axios from "axios";
 import { TableRow, TableCell, Button } from "@mui/material";
-import { bgcolor } from "@mui/system";
 
 function AdminItem({ row, getFeedback }) {
+    const date = new Date(row.date);
+    const flagColor = '#fff2d9';
+
     const handleDelete = () => {
         axios.delete(`/admin/delete/${row.id}`)
             .then(response => {
@@ -24,11 +26,15 @@ function AdminItem({ row, getFeedback }) {
     }
 
     return (
-        <TableRow sx={row.flagged && {bgcolor: 'red'}}>
+        <TableRow sx={row.flagged && {bgcolor: flagColor}}>
             <TableCell align="center">{row.feeling}</TableCell>
             <TableCell align="center">{row.understanding}</TableCell>
             <TableCell align="center">{row.support}</TableCell>
             <TableCell>{row.comments}</TableCell>
+            <TableCell align="center">
+                {/* Quick parse date */}
+                {date.toLocaleString('en-US').split(',')[0]}
+            </TableCell>
             <TableCell>
                 <Button
                     onClick={handleFlag}
