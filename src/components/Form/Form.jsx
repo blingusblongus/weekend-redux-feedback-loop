@@ -52,7 +52,6 @@ function Form({ formSection }) {
 
     const handleNext = (e) => {
         e.preventDefault();
-        console.log('next')
 
         // validate
         if (!input && formSection !== 'comments') {
@@ -88,6 +87,7 @@ function Form({ formSection }) {
         });
     }
 
+    //
     const selectRating = (e) => {
         setInput(e.target.value);
         setDisplayErr(false);
@@ -130,6 +130,7 @@ function Form({ formSection }) {
     }
 
     return (
+        
         <div id="form-container">
             <h2>{prompt}</h2>
             <form id="page-form" className="relative" onSubmit={handleNext}>
@@ -159,8 +160,7 @@ function Form({ formSection }) {
                     </div>
                 </div>
             </form>
-        </div>
-
+        </div>     
     );
 }
 
