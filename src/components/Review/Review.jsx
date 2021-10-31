@@ -6,8 +6,6 @@ import { useHistory } from "react-router";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button } from "@mui/material";
 import { Paper } from "@mui/material";
@@ -22,8 +20,7 @@ function Review(props) {
     const dispatch = useDispatch();
 
     const handleClick = () => {
-        console.log('clicked');
-        axios.post('/', feedback)
+        axios.post('/user', feedback)
             .then(response => {
                 console.log('POST SUCCESS');
 
