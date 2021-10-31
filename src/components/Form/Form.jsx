@@ -50,23 +50,9 @@ function Form({ formSection }) {
             break;
     }
 
-    // on call, send current input data to redux
-    const updateStore = () => {
+    const handleNext = (e) => {
+        e.preventDefault();
 
-        dispatch({
-            type: 'SUBMIT_SECTION',
-            payload: {
-                // reducer adds {[formSection]: value}
-                formSection: formSection,
-                value: input
-            }
-        });
-
-        //Navigate to the next page in the navList
-        history.push(navList[pgIndex + 1]);
-    }
-
-    const handleNext = () => {
         // validate
         if (!input && formSection !== 'comments') {
             setDisplayErr(true);
@@ -79,7 +65,9 @@ function Form({ formSection }) {
         history.push(navList[pgIndex + 1]);
     }
 
-    const handleBack = () => {
+    const handleBack = (e) => {
+        console.log('back')
+        e.preventDefault();
         // store entered data in redux
         updateStore();
 
@@ -87,6 +75,19 @@ function Form({ formSection }) {
         history.push(navList[pgIndex - 1]);
     }
 
+    // on call, send current input data to redux
+    const updateStore = () => {
+        dispatch({
+            type: 'SUBMIT_SECTION',
+            payload: {
+                // reducer adds {[formSection]: value}
+                formSection: formSection,
+                value: input
+            }
+        });
+    }
+
+    //
     const selectRating = (e) => {
         setInput(e.target.value);
         setDisplayErr(false);
@@ -122,15 +123,17 @@ function Form({ formSection }) {
                     margin="dense"
                     value={input}
                     fullWidth
+                    autoFocus
                 ></TextField>
             </div>
         )
     }
 
     return (
+        
         <div id="form-container">
             <h2>{prompt}</h2>
-            <form className="relative">
+            <form id="page-form" className="relative" onSubmit={handleNext}>
 
                 {/* Render Rating or TextField as appropriate */}
                 {inputField}
@@ -139,17 +142,25 @@ function Form({ formSection }) {
                     {/* Leave out the back button on the first page */}
                     {pgIndex > 0 && (
                         <div id="back-btn-wrapper">
-                            <Button variant="contained" onClick={handleBack}>Back</Button>
+                            <Button variant="contained"
+                                onClick={handleBack}>
+                                Back
+                            </Button>
                         </div>
                     )}
 
-                    <div className={pgIndex == 0 && "flex-center"} id="next-wrapper">
-                        <Button variant="contained" onClick={handleNext}>NEXT</Button>
+                    {/* Center Next Button if it's the first page */}
+                    <div className={pgIndex == 0 ? "flex-center" : undefined}
+                        id="next-wrapper">
+                        <Button variant="contained"
+                            type="submit"
+                            form="page-form">
+                            NEXT
+                        </Button>
                     </div>
                 </div>
             </form>
-        </div>
-        
+        </div>     
     );
 }
 

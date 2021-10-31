@@ -5,10 +5,9 @@ import AdminItem from "../AdminItem/AdminItem";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Button, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import { Paper } from "@mui/material";
 
 function Admin(props) {
@@ -29,8 +28,6 @@ function Admin(props) {
             );
     }
 
-    console.log('feedback', feedback);
-
     return (
         <Container>
             <Paper>
@@ -41,7 +38,9 @@ function Admin(props) {
                             <TableCell align="center" sx={{ width: '15%' }}>Understanding</TableCell>
                             <TableCell align="center" sx={{ width: '15%' }}>Support</TableCell>
                             <TableCell>Comments</TableCell>
-                            <TableCell sx={{ width: '10%' }}>Delete</TableCell>
+                            <TableCell align="center">Date</TableCell>
+                            <TableCell align="center" sx={{ width: '10%' }}>Flag</TableCell>
+                            <TableCell align="center" sx={{ width: '10%' }}>Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
