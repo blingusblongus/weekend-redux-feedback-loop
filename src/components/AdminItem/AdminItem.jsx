@@ -2,14 +2,24 @@ import axios from "axios";
 import { TableRow, TableCell, Button } from "@mui/material";
 
 function AdminItem({ row, getFeedback }) {
-    const handleClick = () => {
-        axios.delete(`/admin/${row.id}`)
+    const handleDelete = () => {
+        axios.delete(`/admin/delete/${row.id}`)
             .then(response => {
                 console.log('DELETE success');
                 getFeedback();
             }).catch(err => {
                 console.log('DELETE err');
             });
+    }
+
+    const handleFlag = () => {
+        axios.put(`/admin/flag/${row.id}`)
+            .then(response => {
+                console.log('PUT SUCCESS');
+                getFeedback();
+            }).catch(err => {
+                console.log('DELETE ERR', err);
+            })
     }
 
     return (
@@ -20,7 +30,7 @@ function AdminItem({ row, getFeedback }) {
             <TableCell>{row.comments}</TableCell>
             <TableCell>
                 <Button
-                    onClick={handleClick}
+                    onClick={handleFlag}
                     variant="outlined"
                     color="warning">
                     Flag
@@ -28,7 +38,7 @@ function AdminItem({ row, getFeedback }) {
             </TableCell>
             <TableCell>
                 <Button
-                    onClick={handleClick}
+                    onClick={handleDelete}
                     variant="outlined"
                     color="error">
                     Delete

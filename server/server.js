@@ -10,20 +10,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('build'));
 
 /** ---------- EXPRESS ROUTES ---------- **/
-app.get('/admin', (req, res) => {
-    let queryText = `
-        SELECT * FROM feedback`;
-    console.log('GET')
+const adminRouter = require('./routes/admin.router.js');
 
-    pool.query(queryText)
-        .then(result => {
-            console.log('GET');
-            res.send(result.rows);
-        }).catch(err => {
-            console.log('GET ERR', err);
-            res.sendStatus(500);
-        });
-});
+app.use('/admin', adminRouter);
 
 app.post('/', (req, res) => {
     console.log('req', req.body);
@@ -48,24 +37,6 @@ app.post('/', (req, res) => {
             console.log('POST ERR', err);
             res.sendStatus(400);
         });
-})
-
-app.delete('/admin/:id', (req, res) => {
-    const queryText = `
-        DELETE FROM feedback
-        WHERE id = $1;`;
-
-    const values = [req.params.id];
-
-    pool.query(queryText, values)
-        .then(result => {
-            console.log('DELETE @', req.params.id);
-            res.sendStatus(204);
-        }).catch(err => {
-            console.log('DELETE ERR');
-            console.log('err', err);
-            res.sendStatus(500);
-        })
 })
 
 /** ---------- START SERVER ---------- **/
