@@ -8,7 +8,7 @@ A full-stack full-crud single page app for collecting, submitting, and viewing f
 
 As many of the pages share similar structure, I challenged myself to use a single dynamic Form component for each of the views that collect user input. This required some additional logic and conditional formatting, but ended up saving me a lot of time when it came to editing, standardizing, and introducing Material UI components in each view.
 
-## Screenshot
+## Screenshots
 
 ![An example of the review submission page](images/screen1.png)
 ![An example of the admin page](images/screen2.png)
