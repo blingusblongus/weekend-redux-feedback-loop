@@ -1,5 +1,8 @@
 import axios from "axios";
-import { TableRow, TableCell, Button } from "@mui/material";
+import { TableRow, TableCell, IconButton } from "@mui/material";
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import FlagIcon from '@mui/icons-material/Flag';
 
 function AdminItem({ row, getFeedback }) {
     const date = new Date(row.date);
@@ -36,20 +39,20 @@ function AdminItem({ row, getFeedback }) {
                 {date.toLocaleString('en-US').split(',')[0]}
             </TableCell>
             <TableCell>
-                <Button
-                    onClick={handleFlag}
-                    variant="outlined"
-                    color="warning">
-                    Flag
-                </Button>
+                <IconButton 
+                aria-label="flag" 
+                color="warning"
+                onClick={handleFlag}>
+                    <FlagIcon/>
+                </IconButton>
             </TableCell>
             <TableCell>
-                <Button
-                    onClick={handleDelete}
-                    variant="outlined"
-                    color="error">
-                    Delete
-                </Button>
+                <IconButton 
+                aria-label="delete" 
+                color="error"
+                onClick={handleDelete}>
+                    <DeleteIcon/>
+                </IconButton>
             </TableCell>
         </TableRow>
     )
