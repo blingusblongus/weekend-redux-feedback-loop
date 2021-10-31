@@ -22,6 +22,14 @@ function AdminItem({ row, getFeedback }) {
                 <Button
                     onClick={handleClick}
                     variant="outlined"
+                    color="warning">
+                    Flag
+                </Button>
+            </TableCell>
+            <TableCell>
+                <Button
+                    onClick={handleClick}
+                    variant="outlined"
                     color="error">
                     Delete
                 </Button>

@@ -41,7 +41,8 @@ function Admin(props) {
                             <TableCell align="center" sx={{ width: '15%' }}>Understanding</TableCell>
                             <TableCell align="center" sx={{ width: '15%' }}>Support</TableCell>
                             <TableCell>Comments</TableCell>
-                            <TableCell sx={{ width: '10%' }}>Delete</TableCell>
+                            <TableCell align="center" sx={{ width: '10%' }}>Flag</TableCell>
+                            <TableCell align="center" sx={{ width: '10%' }}>Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
