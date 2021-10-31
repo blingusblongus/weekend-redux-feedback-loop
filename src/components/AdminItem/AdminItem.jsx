@@ -9,6 +9,7 @@ function AdminItem({ row, getFeedback }) {
     const flagColor = '#fff2d9';
 
     const handleDelete = () => {
+        if(!confirm('Are you sure you want to delete?')) return;
         axios.delete(`/admin/delete/${row.id}`)
             .then(response => {
                 console.log('DELETE success');
