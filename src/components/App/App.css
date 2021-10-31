@@ -21,3 +21,11 @@
 h4 {
   font-style: italic;
 }
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}

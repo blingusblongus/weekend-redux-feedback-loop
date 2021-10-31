@@ -2,7 +2,7 @@
     [ ] Add SPA routing
 
 [ ] Bonus
-    [ ] Add back buttons
+    [x] Add back buttons
     [ ] draggable input?
 
 [ ] Bugs
