@@ -123,6 +123,7 @@ function Form({ formSection }) {
                     margin="dense"
                     value={input}
                     fullWidth
+                    autoFocus
                 ></TextField>
             </div>
         )
@@ -152,8 +153,7 @@ function Form({ formSection }) {
                         id="next-wrapper">
                         <Button variant="contained"
                             type="submit"
-                            form="page-form"
-                            >
+                            form="page-form">
                             NEXT
                         </Button>
                     </div>
