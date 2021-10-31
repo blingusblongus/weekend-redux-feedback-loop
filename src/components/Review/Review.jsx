@@ -42,7 +42,7 @@ function Review(props) {
         <div>
             <h2>Review Your Feedback</h2>
             <div id="table-container">
-                <Paper>
+                <Paper elevation={3}>
                     <Table>
                         <TableBody>
                             <TableRow>
