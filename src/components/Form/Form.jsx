@@ -3,14 +3,28 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-function FormFeeling({formSection}) {
+import { Button, TextField, Rating } from "@mui/material";
+import './Form.css';
+
+function Form({ formSection }) {
+    // Grab existing data from reducer
     const formData = useSelector(store => store.feedbackReducer);
+
+    // If the relevant data is in the store, set the input to that value
     const [input, setInput] = useState(formData[formSection] || '');
+
     const dispatch = useDispatch();
     const history = useHistory();
-    let prompt, inputType, pgIndex;
-    const navList = ['/', '/understanding', '/support', '/comments', '/review'];
+    let prompt, inputType, pgIndex, inputField, emptyErr;
 
+    const navList = ['/', '/understanding', '/support', '/comments', '/review'];
+    const reactions = [
+        '¯\\_(ತ_ʖತ)_/¯',
+        '(o_O) ?',
+        '(´･_･`)',
+        '(*^‿^*)',
+        '°˖✧◝(⁰▿⁰)◜✧˖°'
+    ]
     // Select form content
     switch (formSection) {
         case 'feeling':
@@ -41,6 +55,8 @@ function FormFeeling({formSection}) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        if(input)
+
         dispatch({
             type: 'SUBMIT_SECTION',
             payload: {
@@ -58,18 +74,53 @@ function FormFeeling({formSection}) {
         history.push(navList[pgIndex - 1]);
     }
 
+    // assign inputField to appropriate component
+    if (inputType === "number") {
+        inputField = (
+            <div className="input-container">
+                <div id="reaction-container">
+                    {reactions[input - 1]}
+                </div>
+                <div>
+                    <Rating type={inputType}
+                        onChange={(e) => setInput(e.target.value)}
+                        value={parseInt(input)}
+                        min={1}
+                        max={5}
+                    ></Rating>
+                </div>
+            </div>
+        )
+    } else {
+        inputField = (
+            <div id="comment-container input-container">
+                <TextField
+                    multiline
+                    rows={4}
+                    size="small"
+                    margin="dense"
+                    fullWidth
+                    required
+                ></TextField>
+            </div>
+        )
+    }
+
     return (
-        <div>
+        <div id="form-container">
             <h2>{prompt}</h2>
-            {pgIndex ? <button onClick={handleBack}>Back</button> : ''}
             <form onSubmit={handleSubmit}>
-                <input type={inputType}
-                onChange={(e) => setInput(e.target.value)}
-                value={input}></input>
-                <button>NEXT</button>
+                {inputField}
+                <div id="next-wrapper">
+                    <Button variant="contained" type="submit">NEXT</Button>
+                </div>
             </form>
+            <hr />
+            <div id="back-btn-wrapper">
+                {pgIndex > 0 && <Button variant="contained" onClick={handleBack}>Back</Button>}
+            </div>
         </div>
     );
 }
 
-export default FormFeeling;
+export default Form;

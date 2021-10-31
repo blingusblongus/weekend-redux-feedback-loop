@@ -1,0 +1,20 @@
+form {
+    height: 170px;
+    width: 50%;
+    max-width: 700px;
+    margin: auto;
+}
+
+#reaction-container {
+    height: 20px;
+}
+
+#next-wrapper {
+    margin: 10px;
+}
+
+@media screen and (max-width: 500px) {
+    form {
+        width: 95%;
+    }
+}

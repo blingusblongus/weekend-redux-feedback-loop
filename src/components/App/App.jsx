@@ -6,6 +6,12 @@ import Form from '../Form/Form.jsx';
 import Success from '../Success/Success';
 import Admin from '../Admin/Admin';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 function App() {
 
   return (
