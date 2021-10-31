@@ -5,8 +5,7 @@ const pool = require('../modules/pool.js');
 router.get('/', (req, res) => {
     let queryText = `
         SELECT * FROM feedback
-        ORDER BY id;`;
-    console.log('GET')
+        ORDER BY id DESC;`;
 
     pool.query(queryText)
         .then(result => {
