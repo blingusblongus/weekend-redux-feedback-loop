@@ -1,14 +1,10 @@
 form {
     height: 170px;
-    /* align-items: center; */
     width: 50%;
+    max-width: 700px;
     margin: auto;
 }
 
-#comment-container {
-    width: 50%;
-    margin: auto;
-}
 #reaction-container {
     height: 20px;
 }
@@ -17,9 +13,8 @@ form {
     margin: 10px;
 }
 
-
-@media screen and (max-width: 400px) {
-    .comment-container {
+@media screen and (max-width: 500px) {
+    form {
         width: 95%;
     }
 }

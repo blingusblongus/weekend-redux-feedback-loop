@@ -15,7 +15,8 @@ function Form({ formSection }) {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    let prompt, inputType, pgIndex, inputField;
+    let prompt, inputType, pgIndex, inputField, emptyErr;
+
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
     const reactions = [
         '¯\\_(ತ_ʖತ)_/¯',
@@ -53,6 +54,8 @@ function Form({ formSection }) {
     // on Submit, send data to redux
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if(input)
 
         dispatch({
             type: 'SUBMIT_SECTION',
@@ -97,6 +100,7 @@ function Form({ formSection }) {
                     size="small"
                     margin="dense"
                     fullWidth
+                    required
                 ></TextField>
             </div>
         )
