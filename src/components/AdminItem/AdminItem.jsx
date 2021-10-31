@@ -1,6 +1,7 @@
 import axios from "axios";
+import { TableRow, TableCell, Button } from "@mui/material";
 
-function AdminItem({row, getFeedback}) {
+function AdminItem({ row, getFeedback }) {
     const handleClick = () => {
         axios.delete(`/admin/${row.id}`)
             .then(response => {
@@ -12,13 +13,20 @@ function AdminItem({row, getFeedback}) {
     }
 
     return (
-        <tr>
-            <td>{row.feeling}</td>
-            <td>{row.understanding}</td>
-            <td>{row.support}</td>
-            <td>{row.comments}</td>
-            <td><button onClick={handleClick}>Delete</button></td>
-        </tr>
+        <TableRow>
+            <TableCell align="center">{row.feeling}</TableCell>
+            <TableCell align="center">{row.understanding}</TableCell>
+            <TableCell align="center">{row.support}</TableCell>
+            <TableCell>{row.comments}</TableCell>
+            <TableCell>
+                <Button
+                    onClick={handleClick}
+                    variant="outlined"
+                    color="error">
+                    Delete
+                </Button>
+            </TableCell>
+        </TableRow>
     )
 }
 
