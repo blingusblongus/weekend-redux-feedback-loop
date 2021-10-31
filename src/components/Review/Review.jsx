@@ -73,7 +73,6 @@ function Review(props) {
                     <Button variant="contained" onClick={handleClick}>SUBMIT</Button>
                 </div>
             </div>
-
         </div>
 
     );

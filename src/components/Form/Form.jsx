@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 
-import { Button, TextField, Rating } from "@mui/material";
+import { Button, TextField, Rating, Paper } from "@mui/material";
 import './Form.css';
 
 // Reactions for Rating components
@@ -23,8 +23,8 @@ function Form({ formSection }) {
 
     // Default flow to help with history hook
     const navList = ['/', '/understanding', '/support', '/comments', '/review'];
-    
-    
+
+
 
     // Select form content
     switch (formSection) {
@@ -56,7 +56,7 @@ function Form({ formSection }) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!input && formSection !== 'comments'){
+        if (!input && formSection !== 'comments') {
             setDisplayErr(true);
             return;
         }
@@ -106,7 +106,7 @@ function Form({ formSection }) {
         inputField = (
             <div id="input-container">
                 <TextField
-                    onChange={(e)=>setInput(e.target.value)}
+                    onChange={(e) => setInput(e.target.value)}
                     multiline
                     rows={4}
                     size="small"
@@ -120,17 +120,26 @@ function Form({ formSection }) {
     return (
         <div id="form-container">
             <h2>{prompt}</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="relative">
+
+                {/* Render Rating or TextField as appropriate */}
                 {inputField}
-                <div id="next-wrapper">
-                    <Button variant="contained" type="submit">NEXT</Button>
+
+                <div id="button-container">
+                    {/* Leave out the back button on the first page */}
+                    {pgIndex > 0 && (
+                        <div id="back-btn-wrapper">
+                            <Button variant="contained" onClick={handleBack}>Back</Button>
+                        </div>
+                    )}
+
+                    <div className={pgIndex == 0 && "flex-center"} id="next-wrapper">
+                        <Button variant="contained" type="submit">NEXT</Button>
+                    </div>
                 </div>
             </form>
-            <hr />
-            <div id="back-btn-wrapper">
-                {pgIndex > 0 && <Button variant="contained" onClick={handleBack}>Back</Button>}
-            </div>
         </div>
+        
     );
 }
 
