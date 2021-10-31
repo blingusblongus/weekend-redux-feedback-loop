@@ -26,7 +26,7 @@ function AdminItem({ row, getFeedback }) {
     }
 
     return (
-        <TableRow sx={row.flagged && {bgcolor: flagColor}}>
+        <TableRow sx={row.flagged ? {bgcolor: flagColor} : undefined}>
             <TableCell align="center">{row.feeling}</TableCell>
             <TableCell align="center">{row.understanding}</TableCell>
             <TableCell align="center">{row.support}</TableCell>
