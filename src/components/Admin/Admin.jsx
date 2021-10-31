@@ -34,13 +34,13 @@ function Admin(props) {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell align="center" sx={{ width: '15%' }}>Feeling</TableCell>
-                            <TableCell align="center" sx={{ width: '15%' }}>Understanding</TableCell>
-                            <TableCell align="center" sx={{ width: '15%' }}>Support</TableCell>
+                            <TableCell align="center" sx={{ width: '7%' }}>Feeling</TableCell>
+                            <TableCell align="center" sx={{ width: '7%' }}>Understanding</TableCell>
+                            <TableCell align="center" sx={{ width: '7%' }}>Support</TableCell>
                             <TableCell>Comments</TableCell>
                             <TableCell align="center">Date</TableCell>
-                            <TableCell align="center" sx={{ width: '10%' }}>Flag</TableCell>
-                            <TableCell align="center" sx={{ width: '10%' }}>Delete</TableCell>
+                            <TableCell align="center" sx={{ width: '7%' }}>Flag</TableCell>
+                            <TableCell align="center" sx={{ width: '7%' }}>Delete</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
